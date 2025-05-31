@@ -8,7 +8,7 @@
             font-family: Arial, sans-serif;
             padding: 30px;
             background: url('https://png.pngtree.com/thumb_back/fh260/background/20190916/pngtree-cute-travel-doodle-pattern-image_314979.jpg');
-            background-size:flex;
+            background-size:cover;
             position:absolute; /* Ensures overlay stays fixed over the viewport */
             top: 0;
             left: 0;
@@ -124,13 +124,13 @@
 
         {% for section, items in result.sections.items() %}
             <div class="section-header">
-                {% if section == 'places' %}
+                {% if section == 'places' %}places
                     
-                {% elif section == 'foods' %}
+                {% elif section == 'foods' %}foods
+                   
+                {% elif section == 'malls' %}malls
                     
-                {% elif section == 'malls' %}
-                    
-                {% elif section == 'restaurants' %}
+                {% elif section == 'restaurants' %}restaurants
                     
                 {% endif %}
             </div>
