@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color:rgba(89, 161, 187, 0.527);
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: right;
+            background: #333;
+        }
+        nav a {
+            color: white;
+            padding: 15px;
+            font-size:20px;
+            text-decoration: none;
+            
+        }
+        nav a:hover {
+            background: #575757;
+        }
+        .content {
+            font-size: xx-large;
+            padding: 20px;
+        }
+        @media screen and (max-width: 600px) {
+            nav {
+                flex-direction: column;
+            }
+            nav a {
+                text-align: center;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+    <div class="container">
+        <div class="content">
+            <h1>Let Us Guide Your Trip</h1>
+        </div>
+    </div>
+</body>
+</html>
+

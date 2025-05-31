@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🧳 Guide Your Trip</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background: url('https://png.pngtree.com/thumb_back/fh260/background/20190916/pngtree-cute-travel-doodle-pattern-image_314979.jpg');
+            background-size:flex;
+            position:absolute; /* Ensures overlay stays fixed over the viewport */
+            top: 0;
+            left: 0;
+            min-width:100%;
+            min-height: 100vh; /* instead of fixed height */
+            overflow-y: auto;
+            
+            
+            
+            
+        }
+        .container{
+            
+            position:absolute; /* Ensures overlay stays fixed over the viewport */
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100vh; /* instead of fixed height */
+            overflow-y: auto;
+            background-color: rgba(133, 202, 225, 0.829); /* Blue overlay with 50% opacity */
+            z-index: 1; /* Ensures it sits above the background image */
+            
+
+        }
+        h1 {
+            margin-bottom: 0px;
+            text-align: center;
+            font-size: 100px;
+            font-family: Arial, sans-serif;
+            color: #a8d5f5;
+            text-align: center;
+            background-color: #010a1f;
+            margin-top: 0px;
+        }
+        .section-header {
+            font-size: 24px;
+            margin-top: 30px;
+            font-weight: bold;
+            color: #01101f;
+            text-align: left;
+            margin-left: 200px;
+            margin-right: 50px;
+        }
+        .item {
+            margin: 0px 0;
+            font-size: 18px;
+            margin-left: 200px;
+            margin-right: 50px;
+            margin-bottom: 30px;
+            
+
+        }
+        .map-link {
+            color: #7a0202;
+            text-decoration: none;
+            text-align: right;
+            margin-right: 200px;
+
+        }
+        .map-link:hover {
+            color: #010d1c;
+            
+        }
+        .description {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #040404;
+            text-align: left;
+            margin-left: 200px;
+            margin-right: 50px;
+        }
+        form {
+            margin-bottom: 30px;
+            text-align:center ;
+        }
+        button{
+            margin-top:6%;
+            transform: translateX(-50%); /* Centers the button perfectly */
+            padding: 10px 20px;
+            font-size: 13px;
+            color: white;
+            background-color: #010a1f;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1;
+        }
+        button:hover {
+            background-color: #590371; /* Changes button color on hover */
+        }
+        
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>🧳Guide Your Trip</h1>
+
+    <form method="post">
+    <input type="text" name="city" placeholder="Enter a City Name" style="height: 40px; width: 300px; margin-bottom: 10px;margin-right: 100px;text-align: center;border-radius: 5px;align-items: center;font-size: 15px;font-weight: bold;">
+    <button type="submit" style="width: 150px;align-items: center;">Get Travel Info</button>
+    </form>
+
+    {% if result %}
+        <div class="section-header">📍 About {{ result.city }}</div>
+        <div class="item description">{{ result.description }}</div>
+
+        <div class="section-header">🗺️ Maps </div>
+        <div class="item">
+            <a class="map-link" href="{{ result.maps_link }}" target="_blank">Open {{ result.city }} in Google Maps</a>
+        </div>
+
+        {% for section, items in result.sections.items() %}
+            <div class="section-header">
+                {% if section == 'places' %}
+                    
+                {% elif section == 'foods' %}
+                    
+                {% elif section == 'malls' %}
+                    
+                {% elif section == 'restaurants' %}
+                    
+                {% endif %}
+            </div>
+            {% for item in items %}
+                <div class="item" style="margin-top: 30px;">🔹 <b>{{ item }} </b> |
+                    <a class="map-link" href="{{ get_maps_link(item, result.city) }}" target="_blank">📍Map</a>
+                </div>
+            {% endfor %}
+            
+{% endfor %}
+
+    {% endif %}
+    </div>
+</body>
+</html>
