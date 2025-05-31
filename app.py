@@ -3,8 +3,15 @@ import wikipedia
 import openai 
 import urllib.parse
 
-openai.api_key = "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"
+
 openai.api_base = "https://openrouter.ai/api/v1"
+openai.api_key = "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"
+
+# Required for OpenRouter
+openai.default_headers = {
+    "Authorization": "Bearer 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"
+}
+
 
 
 
