@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Itinerary for {{ city }}</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://media.istockphoto.com/id/486726986/vector/travel-seamless-background.jpg?s=612x612&w=0&k=20&c=zIm3VeeoF06ntI0pC7AzfZMCQdaoKR7o6LwXT36z1Ug=');
+      background-size: cover;
+      margin: 0;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background-color: #dbd4cdb8;
+      z-index: 1;
+      overflow-y: auto;
+      padding-bottom: 50px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #4b261f;
+      padding: 20px 0;
+    }
+
+    .header h1 {
+      font-size: 60px;
+      color: #f8f7f7;
+      margin: 0;
+    }
+
+    .section {
+      margin: 30px 80px;
+      background-color: #f8f0e8bd;
+      padding: 20px 30px;
+      border-radius: 10px;
+    }
+
+    .section h2 {
+      font-size: 26px;
+      color: #01101f;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      font-size: 18px;
+      margin: 20px 0;
+      padding: 15px;
+      border-left: 6px solid #4b261f;
+      border-radius: 5px;
+      background-color: #ffffffc9;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+
+    li p {
+      margin: 5px 0;
+    }
+
+    a.map-link {
+      text-decoration: none;
+      color: #0645AD;
+      font-weight: bold;
+    }
+
+    a.map-link:hover {
+      color: #023080;
+    }
+
+    a.button {
+      display: inline-block;
+      margin: 30px 20px 0 80px;
+      font-size: 16px;
+      color: white;
+      background-color: #4b261f;
+      padding: 10px 25px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    a.button:hover {
+      background-color: #023080;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 40px;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .section {
+        margin: 20px;
+        padding: 15px;
+      }
+
+      a.button {
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>{{ days }}-Day Itinerary: {{ city }}</h1>
+    </div>
+
+    {% for day, items in itinerary.items() %}
+      <div class="section">
+        <h2>{{ day }}</h2>
+        <ul>
+          {% for item in items %}
+            <li>
+              <p><strong>📍 Place to Visit:</strong> {{ item.place }}</p>
+              <p><strong>📝 Description:</strong> {{ item.description }}</p>
+              <p><em>{{ item.summary }}</em></p>
+              <p><a href="{{ item.map }}" target="_blank" class="map-link">🔗 View on Map</a></p>
+              <p><strong>🍽️ Food Place:</strong> {{ item.food_place }}</p>
+              <p><strong>🌮 Must-Try Food:</strong> {{ item.food_item }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+
+    <a href="/" class="button">← Back to Home</a>
+    <a href="/index" class="button">🌍 Go to Travel Guide</a>
+  </div>
+</body>
+</html>
+
+

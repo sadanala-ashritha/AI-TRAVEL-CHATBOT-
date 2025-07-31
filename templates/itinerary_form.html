@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Itinerary Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://media.istockphoto.com/id/486726986/vector/travel-seamless-background.jpg?s=612x612&w=0&k=20&c=zIm3VeeoF06ntI0pC7AzfZMCQdaoKR7o6LwXT36z1Ug=');
+      background-size: cover;
+      margin: 0;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background-color: #dbd4cdb8;
+      z-index: 1;
+      overflow-y: auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #4b261f;
+      padding: 20px 0;
+    }
+
+    .header img {
+      height: 80px;
+      margin-right: 20px;
+    }
+
+    .header h1 {
+      font-size: 80px;
+      color: #f8f7f7;
+      margin: 0;
+    }
+
+    form {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    label {
+      font-size: 18px;
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      height: 30px;
+      width: 280px;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px;
+      margin-top: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 15px;
+      color: white;
+      background-color: #4b261f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #023080;
+    }
+
+    /* === Loading Overlay === */
+    #loading-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .spinner {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #4b261f;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      color: white;
+      font-size: 20px;
+      margin-top: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="https://cdn-icons-png.flaticon.com/512/854/854878.png" alt="Airplane Icon">
+      <h1>Itinerary Generator</h1>
+    </div>
+
+    <form method="post" onsubmit="showLoading()">
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city" required>
+
+      <label for="days">Days:</label>
+      <input type="number" id="days" name="days" min="1" max="14" required>
+
+      <br>
+      <button type="submit">Generate</button>
+    </form>
+  </div>
+
+  <!-- Loading Spinner Overlay -->
+  <div id="loading-overlay">
+    <div class="spinner"></div>
+    <div class="loading-text">Generating your itinerary...</div>
+  </div>
+
+  <script>
+    function showLoading() {
+      document.getElementById("loading-overlay").style.display = "flex";
+    }
+  </script>
+</body>
+</html>
+
+

@@ -3,21 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guide a Trip</title>
+    <title>Home page</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
         <h1 class="welcome-text">Welcome to Guide a Trip</h1>
-        <div class="button">
-            <button onclick="navigateToSignIn()">Get Started</button>
+        <div class="button-group">
+        <button onclick="navigateToItinerary()">Itinerary Generator</button>
+        <button onclick="navigateToTravelInfo()">Travel Guide</button>
         </div>
+
+
     </div>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+    <div class="spinner"></div>
+    </div>
+
     <script>
-        function navigateToSignIn() {
-            window.location.href = "/index"; 
-            
-        }
-    </script>
+    function showLoadingAndNavigate(targetUrl) {
+        document.getElementById("loading-overlay").style.display = "flex";
+        setTimeout(() => {
+            window.location.href = targetUrl;
+        }, 500);  // Adjust delay if needed
+    }
+
+    function navigateToItinerary() {
+        showLoadingAndNavigate("/itinerary");
+    }
+
+    function navigateToTravelInfo() {
+        showLoadingAndNavigate("/index");
+    }
+</script>
+
+
 </body>
 </html>
